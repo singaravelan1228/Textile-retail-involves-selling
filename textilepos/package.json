@@ -1,0 +1,68 @@
+{
+  "name": "textilepos-desktop",
+  "version": "2.0.0",
+  "description": "TextilePOS — Retail Textiles Billing System",
+  "main": "electron/main.js",
+  "author": "TextilePOS",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start":       "electron .",
+    "build:client": "cd client && npm run build",
+    "build:win":   "electron-builder --win --x64",
+    "build:all":   "npm run build:client && npm run build:win",
+    "dev":         "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.7"
+  },
+  "devDependencies": {
+    "concurrently":   "^8.2.2",
+    "electron":       "^28.1.0",
+    "electron-builder":"^24.9.1"
+  },
+  "build": {
+    "appId":       "com.textilepos.billing",
+    "productName": "TextilePOS",
+    "copyright":   "Copyright © 2024 TextilePOS",
+    "directories": {
+      "output": "dist-electron",
+      "buildResources": "electron"
+    },
+    "files": [
+      "electron/**/*",
+      "server/**/*",
+      "client/dist/**/*",
+      "!server/node_modules/.cache",
+      "!**/*.md",
+      "!**/.git"
+    ],
+    "extraResources": [
+      { "from": "server/uploads", "to": "uploads", "filter": ["**/*"] }
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis",     "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "electron/icon.ico",
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick":           false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon":      "electron/icon.ico",
+      "uninstallerIcon":    "electron/icon.ico",
+      "installerHeaderIcon":"electron/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName":       "TextilePOS",
+      "include":            "electron/installer.nsh"
+    },
+    "extraMetadata": {
+      "main": "electron/main.js"
+    },
+    "nodeGypRebuild": false,
+    "npmRebuild":     false
+  }
+}

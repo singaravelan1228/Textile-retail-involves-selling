@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: transparent;
+    display: flex; align-items: center; justify-content: center;
+    height: 100vh; width: 100vw;
+  }
+  .card {
+    background: linear-gradient(145deg, #0A1628, #0D2018);
+    border-radius: 20px;
+    padding: 40px 50px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .icon {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, #0D5C45, #10B981);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    box-shadow: 0 8px 24px rgba(13,92,69,0.5);
+  }
+  .icon svg { fill: white; }
+  h1 { font-size: 26px; font-weight: 800; color: #F1F5F9; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .sub { font-size: 13px; color: #64748B; margin-bottom: 30px; }
+  .bar-wrap { width: 100%; height: 4px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
+  .bar { height: 4px; background: linear-gradient(90deg, #0D5C45, #10B981, #34D399); border-radius: 4px;
+         animation: load 2.5s ease-in-out infinite; }
+  @keyframes load { 0%{width:0%} 60%{width:90%} 100%{width:100%} }
+  .status { font-size: 11px; color: #475569; margin-top: 14px; }
+  .dot { display: inline-block; animation: blink 1s infinite; }
+  .dot:nth-child(2){ animation-delay:.2s } .dot:nth-child(3){ animation-delay:.4s }
+  @keyframes blink { 0%,100%{opacity:.2} 50%{opacity:1} }
+  .version { font-size: 10px; color: #334155; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon">
+    <svg width="32" height="32" viewBox="0 0 24 24">
+      <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+    </svg>
+  </div>
+  <h1>TextilePOS</h1>
+  <div class="sub">Retail Textiles Billing System</div>
+  <div class="bar-wrap"><div class="bar"></div></div>
+  <div class="status">
+    Starting<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+  </div>
+  <div class="version">v2.0.0</div>
+</div>
+</body>
+</html>
